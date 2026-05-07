@@ -1,6 +1,9 @@
 public static class Divisors {
     /// <summary>
     /// Entry point for the Divisors class
+    /// This method will call the FindDivisors method with a few test cases and print the results to the console.
+    /// The expected output for the test cases is as follows:
+
     /// </summary>
     public static void Run() {
         List<int> list = FindDivisors(80);
@@ -18,6 +21,11 @@ public static class Divisors {
     /// <returns>List of divisors</returns>
     private static List<int> FindDivisors(int number) {
         List<int> results = new();
+        for (int i = 1; i < number; i++) {
+            if (number % i == 0) {
+                results.Add(i);
+            }
+        }
         // TODO problem 1
         return results;
     }
