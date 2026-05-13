@@ -366,3 +366,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Visual Studio Solution User Options file, which contains user-specific information about opened documents, breakpoints, etc.
+cse212-projects.sln
