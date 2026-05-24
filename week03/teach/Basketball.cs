@@ -19,18 +19,34 @@ public class Basketball
     {
         var players = new Dictionary<string, int>();
 
-        using var reader = new TextFieldParser("basketball.csv");
+        using var reader = new TextFieldParser("week03/teach/basketball.csv");        
         reader.TextFieldType = FieldType.Delimited;
         reader.SetDelimiters(",");
         reader.ReadFields(); // ignore header row
-        while (!reader.EndOfData) {
+
+        while (!reader.EndOfData) 
+        {
             var fields = reader.ReadFields()!;
             var playerId = fields[0];
             var points = int.Parse(fields[8]);
+
+            if (players.ContainsKey(playerId))
+            {
+                players[playerId] += points;
+            }
+            else
+            {
+                players[playerId] = points;
+            }
         }
 
-        Console.WriteLine($"Players: {{{string.Join(", ", players)}}}");
+        var topPlayers = players
+            .OrderByDescending(player => player.Value)
+            .Take(10);
 
-        var topPlayers = new string[10];
+        foreach (var player in topPlayers)
+        {
+            Console.WriteLine($"{player.Key}: {player.Value}");
+        }
     }
 }
